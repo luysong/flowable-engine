@@ -60,13 +60,16 @@ public class SecurityConfiguration {
     @Autowired
     protected RemoteIdmAuthenticationProvider authenticationProvider;
 
-    @Bean
-    public FlowableCookieFilterRegistrationBean flowableCookieFilterRegistrationBean(RemoteIdmService remoteIdmService, FlowableCommonAppProperties properties) {
-        FlowableCookieFilterRegistrationBean filter = new FlowableCookieFilterRegistrationBean(remoteIdmService, properties);
-        filter.addUrlPatterns("/app/*");
-        filter.setRequiredPrivileges(Collections.singletonList(DefaultPrivileges.ACCESS_MODELER));
-        return filter;
-    }
+	/* by leo 20200618
+	 * @Bean public FlowableCookieFilterRegistrationBean
+	 * flowableCookieFilterRegistrationBean(RemoteIdmService remoteIdmService,
+	 * FlowableCommonAppProperties properties) {
+	 * FlowableCookieFilterRegistrationBean filter = new
+	 * FlowableCookieFilterRegistrationBean(remoteIdmService, properties);
+	 * filter.addUrlPatterns("/app/*");
+	 * filter.setRequiredPrivileges(Collections.singletonList(DefaultPrivileges.
+	 * ACCESS_MODELER)); return filter; }
+	 */
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) {
@@ -83,9 +86,10 @@ public class SecurityConfiguration {
     @Order(10)
     public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
-        @Autowired
-        protected FlowableCookieFilterRegistrationBean flowableCookieFilterRegistrationBean;
-
+		/*by leo 20200618
+		 * @Autowired protected FlowableCookieFilterRegistrationBean
+		 * flowableCookieFilterRegistrationBean;
+		 */
         @Autowired
         protected AjaxLogoutSuccessHandler ajaxLogoutSuccessHandler;
 
@@ -95,7 +99,7 @@ public class SecurityConfiguration {
                 .sessionManagement()
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                    .addFilterBefore(flowableCookieFilterRegistrationBean.getFilter(), UsernamePasswordAuthenticationFilter.class)
+ //                   .addFilterBefore(flowableCookieFilterRegistrationBean.getFilter(), UsernamePasswordAuthenticationFilter.class)
                     .logout()
                         .logoutUrl("/app/logout")
                         .logoutSuccessHandler(ajaxLogoutSuccessHandler)
@@ -109,7 +113,9 @@ public class SecurityConfiguration {
                         .addHeaderWriter(new XXssProtectionHeaderWriter())
                 .and()
                     .authorizeRequests()
-                    .antMatchers(REST_ENDPOINTS_PREFIX + "/**").hasAuthority(DefaultPrivileges.ACCESS_MODELER);
+ //                   .antMatchers(REST_ENDPOINTS_PREFIX + "/**").hasAuthority(DefaultPrivileges.ACCESS_MODELER);
+ //  by leo 20200618 add below
+                    .antMatchers(REST_ENDPOINTS_PREFIX + "/**").permitAll();
         }
     }
     
@@ -139,19 +145,23 @@ public class SecurityConfiguration {
                     .csrf()
                     .disable();
 
-            if (modelerAppProperties.isRestEnabled()) {
-
-                if (restAppProperties.isVerifyRestApiPrivilege()) {
-                    http.antMatcher("/api/**").authorizeRequests().antMatchers("/api/**").hasAuthority(DefaultPrivileges.ACCESS_REST_API).and().httpBasic();
-                } else {
-                    http.antMatcher("/api/**").authorizeRequests().antMatchers("/api/**").authenticated().and().httpBasic();
-                    
-                }
-                
-            } else {
-                http.antMatcher("/api/**").authorizeRequests().antMatchers("/api/**").denyAll();
-                
-            }
+			/* by leo 20200618
+			 * if (modelerAppProperties.isRestEnabled()) {
+			 * 
+			 * if (restAppProperties.isVerifyRestApiPrivilege()) {
+			 * http.antMatcher("/api/**").authorizeRequests().antMatchers("/api/**").
+			 * hasAuthority(DefaultPrivileges.ACCESS_REST_API).and().httpBasic(); } else {
+			 * http.antMatcher("/api/**").authorizeRequests().antMatchers("/api/**").
+			 * authenticated().and().httpBasic();
+			 * 
+			 * }
+			 * 
+			 * } else {
+			 * http.antMatcher("/api/**").authorizeRequests().antMatchers("/api/**").denyAll
+			 * ();
+			 * 
+			 * }
+			 */
             
         }
     }
