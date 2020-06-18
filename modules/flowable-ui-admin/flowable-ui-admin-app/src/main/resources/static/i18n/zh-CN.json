@@ -1032,42 +1032,6 @@
             }
         }
     },
-    "APP-DEPLOYMENTS": {
-        "TITLE": "部署",
-        "LIST-MESSAGE": "显示{{size}}个结果, 总计{{total}}匹配到的部署对象.",
-        "LIST-MESSAGE-EMPTY": "没有匹配到的部署.",
-        "FILTER": {
-            "NAME": "名称(case sensitive)",
-            "TENANTID": "租户标识符(case sensitive)"
-        },
-        "SORT": {
-            "ID": "ID",
-            "NAME": "名称"
-        },
-        "HEADER": {
-            "ID": "ID",
-            "NAME": "名称",
-            "DEPLOY-TIME": "部署时间",
-            "CATEGORY": "分类",
-            "TENANT": "租户"
-        },
-        "ACTION": {
-            "UPLOAD": "上传应用程序",
-            "DELETE": "删除部署"
-        },
-        "POPUP": {
-            "UPLOAD": {
-                "DESCRIPTION": "选择一个.app应用程序定义文件去部署或者上传一个包含资产的应用程序的.zip或者.bar 文件.",
-                "DROPZONE": "或在此处拖拽一个文件",
-                "NO-DROP": "浏览器不支持文件丢拖拽",
-                "CANCEL-UPLOAD": "取消上传",
-                "ERROR": "不能上传这个文件"
-            },
-            "DELETE": {
-                "CONFIRM-MESSAGE": "删除部署 '{{name}}'?"
-                }
-        }
-    },
     "APP-DEPLOYMENT": {
         "ID": "ID:",
         "NAME": "名称:",

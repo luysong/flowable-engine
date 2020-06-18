@@ -1143,6 +1143,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M4</version>
 				<configuration>
+				    <skip>true</skip> 
 					<failIfNoTests>false</failIfNoTests>
 					<trimStackTrace>false</trimStackTrace>
 					<redirectTestOutputToFile>true</redirectTestOutputToFile>

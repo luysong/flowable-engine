@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+<definitions 
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="edoras vis" exporterVersion="DEVELOPER"
              targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL"
              xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd">

@@ -102,7 +102,7 @@
             "RESET": "重置筛选条件"
         },
         "ALERT": {
-        	"COMMENT-ADDED": "已将注释添加到\"{{name}}\"", 
+        	"COMMENT-ADDED": "已将注释添加到 \"{{name}}\"", 
             "PERSON-INVOLVED": "{{lastName}}{{firstName}}现在参与\"{{taskName}} \"", 
             "PERSON-NO-LONGER-INVOLVED": "{{lastName}}{{firstName}}不再参与\"{{taskName}} \"", 
             "CREATED": "已创建任务 \"{{name}} \"", 
@@ -207,7 +207,7 @@
     "PROCESS": {
         "ALERT": {
             "COMMENT-ADDED": "评论被添加",
-            "STARTED": "已启动一个新的\"{{processDefinitionName}}}\" 流程",
+            "STARTED": "已启动一个新的 \"{{processDefinitionName}}}\" 流程",
             "START-PROCESS-CONTENT-ADD-FAILED": "将 {{noOfFiles}} 文件添加到流程操作失败"
         },
         "TITLE": {
